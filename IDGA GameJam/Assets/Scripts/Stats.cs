@@ -16,14 +16,19 @@ public class Stats : MonoBehaviour
 		e_Count
 	}
 
+	[SerializeField]
 	float minEnergy;
+	[SerializeField]
 	float currentEnergy;
 	public float maxEnergy;
+
+	public float mass;
 
 	void Awake()
 	{
 		_fsm = new FSM<CSTATES>();
 		AddStates();
+		Instance = this;
 	}
 
 	void AddStates()
@@ -51,11 +56,54 @@ public class Stats : MonoBehaviour
 	{
 		minEnergy = 0;
 		currentEnergy = maxEnergy / 2;
+		StartCoroutine(Shrinking());
 	}
 
+	IEnumerator Growing(float mass)
+	{
+		while(currentEnergy != currentEnergy + mass)
+		{
+			currentEnergy += mass + Time.deltaTime;
+			yield return null;
+		}
+		_fsm.Transition(_fsm.state, CSTATES.e_Shrinking);
+		StartCoroutine(Shrinking());
+		StopCoroutine(Growing(mass));
+	}
+
+	IEnumerator Shrinking()
+	{
+		while(_fsm.state == CSTATES.e_Shrinking)
+		{
+			currentEnergy -= 2 * Time.deltaTime; 
+			if(currentEnergy <= minEnergy)
+			{
+				_fsm.Transition(_fsm.state, CSTATES.e_Dead);
+			}
+			yield return null;
+		}
+		StopCoroutine(Shrinking());
+	}
+
+	void OnTriggerEnter(Collider a)
+	{
+		StopCoroutine(Shrinking());
+		_fsm.Transition(_fsm.state, CSTATES.e_Growing);
+		StartCoroutine(Growing(a.GetComponent<Stats>().mass));
+	}
 
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		
+	}
+
+	private Stats Instance;
+	public  Stats _Instance
+	{
+		get
+		{
+			return Instance;
+		}
 	}
 }
