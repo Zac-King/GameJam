@@ -24,10 +24,10 @@ public class RadialSpawner : MonoBehaviour
 	 Vector2 spawnDistance;
 
 	[SerializeField]
-	float despawnDistance;
+	 float despawnDistance;
 
 	[SerializeField]
-	int entityNumber;
+	 int entityNumber;
 
 	void Start()
 	{
@@ -63,7 +63,7 @@ public class RadialSpawner : MonoBehaviour
 			}
 		}
 
-		if(unitsSpawned.Count < maxCount && !pauseSpawn)
+		if(unitsSpawned.Count < maxCount && !pauseSpawn && spawnRate <= 0)
 		{
 			int location = Random.Range(0,4);
 			Vector3 spawn = spawnLocation[location];
@@ -80,6 +80,8 @@ public class RadialSpawner : MonoBehaviour
 
 		}
 		}
+
+		spawnRate -= Time.unscaledTime;
 	}
 
 	[ContextMenu("Invoke")]
