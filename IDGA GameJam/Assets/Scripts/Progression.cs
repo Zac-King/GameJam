@@ -107,7 +107,7 @@ public class Progression : MonoBehaviour
 		TimeProgression();
 		if(player.GetComponent<Stats>().currentEnergy <= 0)
 			ProgressState(eSTAGES.BlackHole);
-		else(player.GetComponent<Stats>().currentEnergy >= 100)
+		else if(player.GetComponent<Stats>().currentEnergy >= 100)
 			ProgressState(eSTAGES.BurnOut);
 	}
 }
