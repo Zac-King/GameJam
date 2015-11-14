@@ -24,5 +24,10 @@ public class UI_Actions : MonoBehaviour
 		Application.Quit();
 	}
 
+	public void testgauge(float a_number)
+	{
+
+	}
+
 	protected bool pressed;
 }
