@@ -63,9 +63,18 @@ public class RadialSpawner : MonoBehaviour
 
 		if(unitsSpawned.Count < maxCount && !pauseSpawn)
 		{
-			int location = Random.Range(0,4);				
+			int location = Random.Range(0,4);
+			Vector3 spawn = spawnLocation[location];
+			if(location == 0 || location == 1)
+				{
+					spawn.z = Random.Range(-(gameObject.transform.position.z + spawnDistance.y), gameObject.transform.position.z + spawnDistance.y);	
+				}
+			else if(location == 3 || location == 4)
+				{
+					spawn.x = Random.Range(-(gameObject.transform.position.x + spawnDistance.x), gameObject.transform.position.x + spawnDistance.x);	
+				}
 
-			unitsSpawned.Add((GameObject)Instantiate(unitTypes[0],spawnLocation[location], new Quaternion(0,Random.rotation.y,0,Random.rotation.w)));
+			unitsSpawned.Add((GameObject)Instantiate(unitTypes[0],spawn, new Quaternion(0,Random.rotation.y,0,Random.rotation.w)));
 
 		}
 		}
