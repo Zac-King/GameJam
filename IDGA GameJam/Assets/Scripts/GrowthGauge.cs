@@ -5,14 +5,44 @@ public class GrowthGauge : MonoBehaviour
 {
 	IEnumerator AdjustGage(float a_value)
 	{
-		Quaternion nextValue = new Quaternion(transform.rotation.x, transform.rotation.y, energy + 90 + a_value, transform.rotation.w);
+		a_value *= Mathf.Abs(a_value) / a_value;
 
-		while(transform.rotation != nextValue)
+		a_value /= 100;
+		a_value *= 180;
+
+		posNeg = 1;
+
+		if(a_value < transform.localEulerAngles.z)
 		{
-			Quaternion.Lerp(transform.localRotation, nextValue, Time.deltaTime * 10);
-			yield return null;
+			a_value *= -1;
+			posNeg = -1;
 		}
-	}
+
+		//if(transform.localEulerAngles.z != a_value)
+		//{
+			while(transform.localEulerAngles.z != a_value)
+			{
+				transform.localEulerAngles += new Vector3
+					(0, 0, posNeg * Time.deltaTime * 25f);
+
+				if(Mathf.Abs(Mathf.Abs(a_value) - Mathf.Abs (transform.localEulerAngles.z)) < 1f)
+				{
+					transform.localEulerAngles = 
+						new Vector3 (transform.localEulerAngles.x,
+						             transform.localEulerAngles.y,
+						             Mathf.Abs (a_value));
+
+					break;
+				}
+
+				yield return null;
+			}
+			print ("end");
+		}
+		
+	//}
+
+	private float posNeg;
 
 	[SerializeField] private float m_energy;
 	
@@ -25,6 +55,11 @@ public class GrowthGauge : MonoBehaviour
 
 		set
 		{
+			print ("set");
+
+			if(m_energy == value)
+				return;
+
 			m_energy = value;
 			StopAllCoroutines();
 			StartCoroutine(AdjustGage(m_energy));

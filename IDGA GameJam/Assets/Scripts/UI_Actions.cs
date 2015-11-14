@@ -26,7 +26,11 @@ public class UI_Actions : MonoBehaviour
 
 	public void testgauge(float a_number)
 	{
+		print("test");
 
+		GameObject gauge = FindObjectOfType<GrowthGauge>().gameObject;
+
+		gauge.GetComponent<GrowthGauge>().energy = a_number;
 	}
 
 	protected bool pressed;
