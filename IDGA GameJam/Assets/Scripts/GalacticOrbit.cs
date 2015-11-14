@@ -24,7 +24,7 @@ public class GalacticOrbit : MonoBehaviour
     {
         velocity = Vector3.zero;
         gameObject.GetComponent<SphereCollider>().radius = rangeOfInfluence;
-        transform.up = velocity;
+        //transform.up = velocity;
     }
 
     void OnTriggerEnter(Collider go)
@@ -38,7 +38,7 @@ public class GalacticOrbit : MonoBehaviour
     {
         //Debug.Log("TriggerExit Hit");
         if (BodiesOfInfluence.Contains(go.gameObject))
-        BodiesOfInfluence.Remove(go.gameObject);
+            BodiesOfInfluence.Remove(go.gameObject);
     }
 
 
@@ -51,35 +51,32 @@ public class GalacticOrbit : MonoBehaviour
         }
 
         Cohesion();
-        velocity *= (speed *Time.deltaTime);
-        Velocitylimiter();
+        Velocitylimiter(); 
         transform.position += velocity;
-        
-        //velocity = Vector3.zero;
     }
 
     private void Cohesion()
     {
         foreach (GameObject g in BodiesOfInfluence)
         {
-            g.GetComponent<GalacticOrbit>().velocity += ((transform.position - g.transform.position) / (100 / g.GetComponent<GalacticOrbit>().speed) );
+            g.GetComponent<GalacticOrbit>().velocity += ((transform.position - g.transform.position) / (100 / (g.GetComponent<GalacticOrbit>().speed * Time.deltaTime)) );
         }
     }
 
-    private Vector3 Seperation()
-    {
-        Vector3 r = Vector3.zero;
+    //private void Seperation()
+    //{
+    //    Vector3 r = Vector3.zero;
 
-        foreach (GameObject g in BodiesOfInfluence)
-        {
-            if (Distance(g.transform.position, transform.position) < 2)
-            {
-                r += (transform.position - g.transform.position) / 2;
-            }
-        }
-        r.y = 0;
-        return r;
-    }
+    //    foreach (GameObject g in BodiesOfInfluence)
+    //    {
+    //        if (Distance(g.transform.position, transform.position) < 2)
+    //        {
+    //            r += (transform.position - g.transform.position) / 2;
+    //        }
+    //    }
+    //    r.y = 0;
+    //    velocity += r;
+    //}
 
     private void Velocitylimiter()
     {
