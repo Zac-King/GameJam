@@ -102,10 +102,15 @@ public class Stats : MonoBehaviour
 
 	void OnTriggerEnter(Collider a)
 	{
+		Debug.Log(a.name);
 		StopCoroutine(Shrinking());
 		_fsm.Transition(_fsm.state, CSTATES.e_Growing);
-		Destroy(a.gameObject);
-		StartCoroutine(Growing(a.GetComponent<BaseStats>().mass));
+		if(a.GetComponent<BaseStats>() == true)
+		{
+			StartCoroutine(Growing(a.GetComponent<BaseStats>().mass));
+			Destroy(a.gameObject);
+		}
+
 	}
 
 	// Update is called once per frame
