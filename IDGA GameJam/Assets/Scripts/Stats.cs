@@ -19,7 +19,7 @@ public class Stats : MonoBehaviour
 	[SerializeField]
 	float minEnergy;
 	[SerializeField]
-	float currentEnergy;
+	public float currentEnergy;
 	public float maxEnergy;
 
 	public float growthTimer; 
