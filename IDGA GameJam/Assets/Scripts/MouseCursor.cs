@@ -22,7 +22,7 @@ public class MouseCursor : Singleton<MouseCursor>
 	void CursorMovement()
 	{
 		Vector3 v3 = Input.mousePosition;
-		v3.z = 50;
+		v3.z = (Screen.height/2);
 		v3 = Camera.main.ScreenToWorldPoint(v3);
 		MousePosition = v3;
 	}
