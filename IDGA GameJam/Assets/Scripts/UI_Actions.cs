@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class UI_Actions : MonoBehaviour {
+public class UI_Actions : MonoBehaviour
+{
+	
+	virtual protected void SetTimeScale(float a_scale)
+	{
+		Time.timeScale = a_scale;
+	}
 
-	// Use this for initialization
-	void Start () {
-	
+	virtual protected void ChangeScene(string a_scene)
+	{
+		Application.LoadLevel(a_scene);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	virtual protected void ExitApplication()
+	{
+		Application.Quit();
 	}
+
+	protected bool pressed;
 }
