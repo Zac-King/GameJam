@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Callback.cs" />
+     <Compile Include="Assets\Scripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\FSM.cs" />
      <Compile Include="Assets\Scripts\GalacticOrbit.cs" />
      <Compile Include="Assets\Scripts\Messenger.cs" />
@@ -59,10 +60,10 @@
      <None Include="Assets\Prefabs\ReadMe.txt" />
      <None Include="Assets\Scripts\ReadMe.txt" />
      <None Include="Assets\Textures\ReadMe.txt" />
-     <None Include="Assets\Models\ReadMe.txt" />
      <None Include="Assets\Materials\ReadMe.txt" />
      <None Include="Assets\Resources\ReadMe.txt" />
      <None Include="Assets\Animation\ReadMe.txt" />
+     <None Include="Assets\Models\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 5.1.3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
