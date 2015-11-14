@@ -85,10 +85,15 @@ public class RadialSpawner : MonoBehaviour
 	[ContextMenu("Invoke")]
 	public void NextUnit()
 	{
+		if(entityNumber++ >= unitTypes.Count)
+			entityNumber = 0;
+		else
 		entityNumber++;
 	}
 	public void SelectUnit(int number)
 	{
+		if(number >= unitTypes.Count)
+			entityNumber = unitTypes.Count-1;
 		entityNumber = number;
 	}
 	
