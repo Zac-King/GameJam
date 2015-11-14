@@ -45,11 +45,6 @@ public class CharacterController : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter(Collider a)
-	{
-
-	}
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -77,6 +72,5 @@ public class CharacterController : MonoBehaviour
 	{
 		GravityTool();
 		GField();
-		Movement();
 	}
 }
