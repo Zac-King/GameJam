@@ -15,17 +15,24 @@ public class Progression : MonoBehaviour
 		e_Count
 	}
 
-	float GameTime;
+	public int stage = 0;
+	public float GameTime;
 
 	// Use this for initialization
 	void Start () 
 	{
-		GameTime = 0;
+
 	}
 
 	void TimeProgression()
 	{
-		GameTime += Time.deltaTime * 1;
+		GameTime -= Time.deltaTime;
+
+		if(GameTime <= 0)
+		{
+			stage++;
+			GameTime = 5;
+		}
 	}
 
 	// Update is called once per frame

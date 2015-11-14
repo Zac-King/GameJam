@@ -210,6 +210,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11457180, guid: 0f3b85a4472bbaa4e8e73aae4a73ebb3, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f3b85a4472bbaa4e8e73aae4a73ebb3, type: 2}
   m_IsPrefabParent: 0
@@ -281,6 +285,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 909845101}
+  - 114: {fileID: 909845102}
   m_Layer: 0
   m_Name: GameProgression
   m_TagString: Untagged
@@ -300,6 +305,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &909845102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909845100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044e8a1f7673b054d8a88694724fd185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage: 0
+  GameTime: 5
 --- !u!1 &973787048
 GameObject:
   m_ObjectHideFlags: 0
