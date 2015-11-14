@@ -4,18 +4,21 @@ using System.Collections;
 
 public class UI_Actions : MonoBehaviour
 {
-	public void Pause()
+	
+	virtual protected void SetTimeScale(float a_scale)
 	{
-		Time.timeScale = 0;
+		Time.timeScale = a_scale;
 	}
 
-	public void Resume()
+	virtual protected void ChangeScene(string a_scene)
 	{
-		Time.timeScale = 1;
+		Application.LoadLevel(a_scene);
 	}
 
-	public void ExitApplication()
+	virtual protected void ExitApplication()
 	{
 		Application.Quit();
 	}
+
+	protected bool pressed;
 }
