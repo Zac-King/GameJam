@@ -16,14 +16,20 @@ public class Stats : MonoBehaviour
 		e_Count
 	}
 
+	[SerializeField]
 	float minEnergy;
+	[SerializeField]
 	float currentEnergy;
 	public float maxEnergy;
+
+	public float growthTimer; 
 
 	void Awake()
 	{
 		_fsm = new FSM<CSTATES>();
 		AddStates();
+		AddTransitions();
+		Instance = this;
 	}
 
 	void AddStates()
@@ -42,6 +48,7 @@ public class Stats : MonoBehaviour
 		_fsm.AddTransition(CSTATES.e_Init, CSTATES.e_Idle);
 		_fsm.AddTransition(CSTATES.e_Idle, CSTATES.e_Shrinking);
 		_fsm.AddTransition(CSTATES.e_Shrinking, CSTATES.e_Growing);
+		_fsm.AddTransition(CSTATES.e_Growing, CSTATES.e_Shrinking);
 		_fsm.AddTransition(CSTATES.e_Shrinking, CSTATES.e_Dead);
 		_fsm.AddTransition(CSTATES.e_Growing, CSTATES.e_Dead);
 	}
@@ -49,13 +56,74 @@ public class Stats : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		Debug.Log("Start");
+		_fsm.Transition(_fsm.state, CSTATES.e_Idle);
+		_fsm.Transition(_fsm.state, CSTATES.e_Shrinking);
 		minEnergy = 0;
 		currentEnergy = maxEnergy / 2;
+		StartCoroutine(Shrinking());
 	}
 
+	IEnumerator Growing(float mass)
+	{
+		growthTimer += mass;
+		while(growthTimer * Time.deltaTime > 0)
+		{
+			currentEnergy += Time.deltaTime;
+			if(currentEnergy >= maxEnergy)
+			{
+				_fsm.Transition(_fsm.state, CSTATES.e_Dead);
+			}
+			growthTimer -= Time.deltaTime * 1;
+			yield return null;
+		}
+		growthTimer = 0;
+		_fsm.Transition(_fsm.state, CSTATES.e_Shrinking);
+		StartCoroutine(Shrinking());
+		StopCoroutine(Growing(mass));
+	}
+
+	IEnumerator Shrinking()
+	{
+		Debug.Log(_fsm.state);
+		while(_fsm.state == CSTATES.e_Shrinking)
+		{
+			currentEnergy -= Time.deltaTime; 
+			if(currentEnergy <= minEnergy && tag == "Player")
+			{
+				_fsm.Transition(_fsm.state, CSTATES.e_Dead);
+			}
+			yield return null;
+		}
+		StopCoroutine(Shrinking());
+	}
+
+	void OnTriggerEnter(Collider a)
+	{
+		StopCoroutine(Shrinking());
+		_fsm.Transition(_fsm.state, CSTATES.e_Growing);
+		Destroy(a.gameObject);
+		StartCoroutine(Growing(a.GetComponent<BaseStats>().mass));
+	}
 
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		transform.localScale = new Vector3(currentEnergy, currentEnergy, currentEnergy);
+		if(_fsm.state == CSTATES.e_Dead)
+		{
+			StopAllCoroutines();
+			Destroy(gameObject);
+		}
+
+	}
+
+	private Stats Instance;
+	public  Stats _Instance
+	{
+		get
+		{
+			return Instance;
+		}
 	}
 }
