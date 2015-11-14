@@ -7,20 +7,17 @@ public class GalacticOrbit : MonoBehaviour
     // List of all objects that affect Gravitational pull
     [SerializeField]
     private float rangeOfInfluence = 0.5f;
-
-    [SerializeField]
-    private float bodyMass = 0;
+    // How fast they will pull others
     [SerializeField]
     private float speed = 0.2f;
+    // 
+    [SerializeField]
+    private float velocityLimit = 0.4f;
+    // Velocity 
     [SerializeField]
     public Vector3 velocity;
     [SerializeField]
-    private float velocityLimit = 0.4f;
-    [SerializeField]
     private List<GameObject> BodiesOfInfluence = new List<GameObject>();
-
-    public float seperationMod = 0;
-    public float cohesionMod = 0;
 
     // Use this for initialization
     void Start()
@@ -33,7 +30,7 @@ public class GalacticOrbit : MonoBehaviour
     void OnTriggerEnter(Collider go)
     {
         //Debug.Log("TriggerEnter Hit");
-        if (!go.isTrigger)
+        if (!go.isTrigger && go.GetComponent<GalacticOrbit>())
         BodiesOfInfluence.Add(go.gameObject);
     }
 
@@ -53,8 +50,6 @@ public class GalacticOrbit : MonoBehaviour
                 BodiesOfInfluence.Remove(g);
         }
 
-        //velocity += (Cohesion() * cohesionMod) + (Seperation() * seperationMod);
-
         Cohesion();
         velocity *= (speed *Time.deltaTime);
         Velocitylimiter();
@@ -65,16 +60,10 @@ public class GalacticOrbit : MonoBehaviour
 
     private void Cohesion()
     {
-        // r = Return Velocity
-        Vector3 r = Vector3.zero;
         foreach (GameObject g in BodiesOfInfluence)
         {
-            g.GetComponent<GalacticOrbit>().velocity += (transform.position / 100 );
+            g.GetComponent<GalacticOrbit>().velocity += ((transform.position - g.transform.position) / (100 / g.GetComponent<GalacticOrbit>().speed) );
         }
-        //r = ((r - transform.position) / 100);
-        ////r.y = 0;
-        ////r = r / count;
-        //return r;
     }
 
     private Vector3 Seperation()

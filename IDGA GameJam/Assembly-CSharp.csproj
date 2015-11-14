@@ -45,13 +45,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BaseStats.cs" />
      <Compile Include="Assets\Scripts\Callback.cs" />
      <Compile Include="Assets\Scripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\FSM.cs" />
      <Compile Include="Assets\Scripts\GalacticOrbit.cs" />
+     <Compile Include="Assets\Scripts\GrowthGauge.cs" />
      <Compile Include="Assets\Scripts\Messenger.cs" />
      <Compile Include="Assets\Scripts\MouseCursor.cs" />
+     <Compile Include="Assets\Scripts\Progression.cs" />
+     <Compile Include="Assets\Scripts\RadialSpawner.cs" />
      <Compile Include="Assets\Scripts\Singleton.cs" />
+     <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Scripts\Test.cs" />
      <Compile Include="Assets\Scripts\UI_Actions.cs" />
      <None Include="Assets\Audio\ReadMe.txt" />
