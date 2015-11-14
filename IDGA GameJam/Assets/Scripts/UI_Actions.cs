@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class UI_Actions : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
+public class UI_Actions : MonoBehaviour
+{
+	public void Pause()
+	{
+		Time.timeScale = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void Resume()
+	{
+		Time.timeScale = 1;
+	}
+
+	public void ExitApplication()
+	{
+		Application.Quit();
 	}
 }
