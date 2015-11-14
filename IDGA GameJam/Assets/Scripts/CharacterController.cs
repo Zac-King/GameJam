@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterController : MonoBehaviour 
 {
-	GameObject field;
+	public GameObject field;
 	public GameObject gravityField;
 	public GameObject source;
 	public float G_Force;
@@ -48,7 +48,7 @@ public class CharacterController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		field = Instantiate(gravityField,transform.position,Quaternion.identity) as GameObject;
+		field = Instantiate(gravityField) as GameObject;
 		source = GameObject.FindWithTag("Player");
 	}
 

@@ -61,6 +61,8 @@ public class Stats : MonoBehaviour
 		_fsm.Transition(_fsm.state, CSTATES.e_Shrinking);
 		minEnergy = 0;
 		currentEnergy = maxEnergy / 2;
+		GameObject meter = FindObjectOfType<GrowthGauge>().gameObject;
+		meter.GetComponent<GrowthGauge>().energy = currentEnergy;
 		StartCoroutine(Shrinking());
 	}
 
@@ -100,21 +102,30 @@ public class Stats : MonoBehaviour
 
 	void OnTriggerEnter(Collider a)
 	{
+		Debug.Log(a.name);
 		StopCoroutine(Shrinking());
 		_fsm.Transition(_fsm.state, CSTATES.e_Growing);
-		Destroy(a.gameObject);
-		StartCoroutine(Growing(a.GetComponent<BaseStats>().mass));
+		if(a.GetComponent<BaseStats>() == true)
+		{
+			StartCoroutine(Growing(a.GetComponent<BaseStats>().mass));
+			Destroy(a.gameObject);
+		}
+
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
 		transform.localScale = new Vector3(currentEnergy, currentEnergy, currentEnergy);
+		GameObject meter = FindObjectOfType<GrowthGauge>().gameObject;
+		meter.GetComponent<GrowthGauge>().energy = currentEnergy;
 		if(_fsm.state == CSTATES.e_Dead)
 		{
 			StopAllCoroutines();
 			Destroy(gameObject);
 		}
+
+		Time.timeScale = currentEnergy / maxEnergy * 2;
 
 	}
 

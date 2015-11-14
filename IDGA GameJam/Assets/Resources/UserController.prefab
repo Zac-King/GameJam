@@ -34,16 +34,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155472}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6533ce6cf2af2d4ba4116bdaaa8e489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  field: {fileID: 0}
   gravityField: {fileID: 166072, guid: 446bad5c2ef875a4585c9a884f4e522d, type: 2}
   source: {fileID: 0}
   G_Force: 0
   speed: 1
-  gravityAcceleration: 1
+  gravityAcceleration: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
