@@ -3,16 +3,17 @@ using System.Collections;
 
 public class Progression : MonoBehaviour 
 {
-	public enum STAGES
+	public enum eSTAGES
 	{
-		e_Star,
-		e_Sun,
-		e_Planet1,
-		e_Planet2,
-		e_Moon,
-		e_Life,
-		e_BlackHole,
-		e_Count
+		Star,
+		Sun,
+		Planet1,
+		Planet2,
+		Moon,
+		Life,
+		BlackHole,
+		BurnOut,
+		Count
 	}
 
 	public int stage;
@@ -20,7 +21,7 @@ public class Progression : MonoBehaviour
 	public float GameTime;
 	GameObject player;
 	public float timeMod;
-	public STAGES cStage;
+	public eSTAGES cStage;
 	// Use this for initialization
 	void Start () 
 	{
@@ -35,43 +36,68 @@ public class Progression : MonoBehaviour
 		if(GameTime <= 0)
 		{
 			stage++;
-			cStage = (STAGES)stage;
+			cStage = (eSTAGES)stage;
 			StageTracker();
 		}
 	}
-	
+
+	void ProgressState(eSTAGES j)
+	{
+		cStage = j;
+		StageTracker();
+
+	}
+
 	void StageTracker()
 	{
 		switch(cStage)
 		{
-		case STAGES.e_Star:
+		case eSTAGES.Star:
+			RoundTimer = 60 * 5;
+			GameTime = RoundTimer;
+			player.GetComponent<RadialSpawner>().SelectUnit(0);
+			break;
+		case eSTAGES.Sun:
+			RoundTimer = 60 * 5;
+			GameTime = RoundTimer;
+			player.GetComponent<RadialSpawner>().SelectUnit(1);
+			break;
+		case eSTAGES.Planet1:
+			RoundTimer = 60 * 5;
+			GameTime = RoundTimer;
+			player.GetComponent<RadialSpawner>().SelectUnit(2);
+			break;
+		case eSTAGES.Planet2:
 			RoundTimer = 60 * 5;
 			GameTime = RoundTimer;
 			break;
-		case STAGES.e_Sun:
+		case eSTAGES.Moon:
 			RoundTimer = 60 * 5;
 			GameTime = RoundTimer;
+			player.GetComponent<RadialSpawner>().SelectUnit(3);
 			break;
-		case STAGES.e_Planet1:
-			RoundTimer = 60 * 5;
-			GameTime = RoundTimer;
-			break;
-		case STAGES.e_Planet2:
-			RoundTimer = 60 * 5;
-			GameTime = RoundTimer;
-			break;
-		case STAGES.e_Moon:
-			RoundTimer = 60 * 5;
-			GameTime = RoundTimer;
-			break;
-		case STAGES.e_Life:
+		case eSTAGES.Life:
 			RoundTimer = 60 * 3;
 			GameTime = RoundTimer;
+			player.GetComponent<RadialSpawner>().SelectUnit(4);
 			break;
-		case STAGES.e_BlackHole:
+		case eSTAGES.BlackHole:
+			Lose ("blackhole")
 			break;
 		default:
 			break;
+		}
+	}
+
+	void Lose(string msg)
+	{
+		if(msg == "blackhole")//For when blowing up
+		{
+			///Dylan Put stuff here
+		}
+		else //For when burning out
+		{
+			///Dylan put stuff here
 		}
 	}
 
@@ -79,5 +105,9 @@ public class Progression : MonoBehaviour
 	void Update () 
 	{
 		TimeProgression();
+		if(player.GetComponent<Stats>().currentEnergy <= 0)
+			ProgressState(eSTAGES.BlackHole);
+		else(player.GetComponent<Stats>().currentEnergy >= 100)
+			ProgressState(eSTAGES.BurnOut);
 	}
 }
