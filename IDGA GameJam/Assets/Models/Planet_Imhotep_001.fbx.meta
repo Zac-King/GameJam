@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 6cd26d47641b79e468f6a1e1ae273c00
-timeCreated: 1447536335
+guid: 6d8d925cd6d9b534aabfe799996f7de2
+timeCreated: 1447539429
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Planet_Travos1
+    4300000: Planet_Imhotep
     9500000: //RootNode
   materials:
     importMaterials: 1
