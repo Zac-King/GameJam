@@ -82,7 +82,7 @@ public class Progression : MonoBehaviour
 			player.GetComponent<RadialSpawner>().SelectUnit(4);
 			break;
 		case eSTAGES.BlackHole:
-			Lose ("blackhole")
+			Lose ("blackhole");
 			break;
 		default:
 			break;
