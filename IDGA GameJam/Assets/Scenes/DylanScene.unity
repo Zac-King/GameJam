@@ -183,8 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94582ed48506d9c4db3be39051fffed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Center: {fileID: 0}
-  CamLock: 0
 --- !u!1 &205675789
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityField: {fileID: 166072, guid: 446bad5c2ef875a4585c9a884f4e522d, type: 2}
+  source: {fileID: 0}
   G_Force: 0
+  speed: 1
   gravityAcceleration: 1
 --- !u!4 &1168275455
 Transform:
@@ -417,7 +417,7 @@ GameObject:
   - 23: {fileID: 1508217796}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
