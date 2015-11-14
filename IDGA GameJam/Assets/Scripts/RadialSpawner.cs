@@ -26,6 +26,8 @@ public class RadialSpawner : MonoBehaviour
 	[SerializeField]
 	float despawnDistance;
 
+	[SerializeField]
+	int entityNumber;
 
 	void Start()
 	{
@@ -74,7 +76,7 @@ public class RadialSpawner : MonoBehaviour
 					spawn.x = Random.Range(-(gameObject.transform.position.x + spawnDistance.x), gameObject.transform.position.x + spawnDistance.x);	
 				}
 
-			unitsSpawned.Add((GameObject)Instantiate(unitTypes[0],spawn, new Quaternion(0,Random.rotation.y,0,Random.rotation.w)));
+				unitsSpawned.Add((GameObject)Instantiate(unitTypes[entityNumber],spawn, new Quaternion(0,Random.rotation.y,0,Random.rotation.w)));
 
 		}
 		}
@@ -83,7 +85,11 @@ public class RadialSpawner : MonoBehaviour
 	[ContextMenu("Invoke")]
 	public void NextUnit()
 	{
-		unitTypes.RemoveAt(0);
+		entityNumber++;
+	}
+	public void SelectUnit(int number)
+	{
+		entityNumber = number;
 	}
 	
 }
