@@ -22,12 +22,13 @@ public class Stats : MonoBehaviour
 	float currentEnergy;
 	public float maxEnergy;
 
-	public float mass;
+	public float growthTimer; 
 
 	void Awake()
 	{
 		_fsm = new FSM<CSTATES>();
 		AddStates();
+		AddTransitions();
 		Instance = this;
 	}
 
@@ -47,6 +48,7 @@ public class Stats : MonoBehaviour
 		_fsm.AddTransition(CSTATES.e_Init, CSTATES.e_Idle);
 		_fsm.AddTransition(CSTATES.e_Idle, CSTATES.e_Shrinking);
 		_fsm.AddTransition(CSTATES.e_Shrinking, CSTATES.e_Growing);
+		_fsm.AddTransition(CSTATES.e_Growing, CSTATES.e_Shrinking);
 		_fsm.AddTransition(CSTATES.e_Shrinking, CSTATES.e_Dead);
 		_fsm.AddTransition(CSTATES.e_Growing, CSTATES.e_Dead);
 	}
@@ -54,6 +56,9 @@ public class Stats : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		Debug.Log("Start");
+		_fsm.Transition(_fsm.state, CSTATES.e_Idle);
+		_fsm.Transition(_fsm.state, CSTATES.e_Shrinking);
 		minEnergy = 0;
 		currentEnergy = maxEnergy / 2;
 		StartCoroutine(Shrinking());
@@ -61,11 +66,18 @@ public class Stats : MonoBehaviour
 
 	IEnumerator Growing(float mass)
 	{
-		while(currentEnergy != currentEnergy + mass)
+		growthTimer += mass;
+		while(growthTimer * Time.deltaTime > 0)
 		{
-			currentEnergy += mass + Time.deltaTime;
+			currentEnergy += Time.deltaTime;
+			if(currentEnergy >= maxEnergy)
+			{
+				_fsm.Transition(_fsm.state, CSTATES.e_Dead);
+			}
+			growthTimer -= Time.deltaTime * 1;
 			yield return null;
 		}
+		growthTimer = 0;
 		_fsm.Transition(_fsm.state, CSTATES.e_Shrinking);
 		StartCoroutine(Shrinking());
 		StopCoroutine(Growing(mass));
@@ -73,10 +85,11 @@ public class Stats : MonoBehaviour
 
 	IEnumerator Shrinking()
 	{
+		Debug.Log(_fsm.state);
 		while(_fsm.state == CSTATES.e_Shrinking)
 		{
-			currentEnergy -= 2 * Time.deltaTime; 
-			if(currentEnergy <= minEnergy)
+			currentEnergy -= Time.deltaTime; 
+			if(currentEnergy <= minEnergy && tag == "Player")
 			{
 				_fsm.Transition(_fsm.state, CSTATES.e_Dead);
 			}
@@ -89,13 +102,20 @@ public class Stats : MonoBehaviour
 	{
 		StopCoroutine(Shrinking());
 		_fsm.Transition(_fsm.state, CSTATES.e_Growing);
-		StartCoroutine(Growing(a.GetComponent<Stats>().mass));
+		Destroy(a.gameObject);
+		StartCoroutine(Growing(a.GetComponent<BaseStats>().mass));
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		transform.localScale = new Vector3(currentEnergy, currentEnergy, currentEnergy);
+		if(_fsm.state == CSTATES.e_Dead)
+		{
+			StopAllCoroutines();
+			Destroy(gameObject);
+		}
+
 	}
 
 	private Stats Instance;
