@@ -99,10 +99,15 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0833333358
+      - time: .0166666675
+        value: 160
+        inSlope: 26399.998
+        outSlope: 26399.998
+        tangentMode: 10
+      - time: .0333333351
         value: 600
-        inSlope: 0
-        outSlope: 0
+        inSlope: 26399.998
+        outSlope: 26399.998
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -113,7 +118,7 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0833333358
+      - time: .0333333351
         value: 400
         inSlope: 0
         outSlope: 0
@@ -148,7 +153,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .0833333358
+    m_StopTime: .0333333351
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -166,10 +171,15 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0833333358
+      - time: .0166666675
+        value: 160
+        inSlope: 26399.998
+        outSlope: 26399.998
+        tangentMode: 10
+      - time: .0333333351
         value: 600
-        inSlope: 0
-        outSlope: 0
+        inSlope: 26399.998
+        outSlope: 26399.998
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -180,7 +190,7 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: .0833333358
+      - time: .0333333351
         value: 400
         inSlope: 0
         outSlope: 0
@@ -303,25 +313,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Highlighted
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Pressed
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Disabled
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
