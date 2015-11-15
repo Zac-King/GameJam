@@ -6,10 +6,12 @@ public class GalacticOrbit : MonoBehaviour
 {
     // List of all objects that affect Gravitational pull
     [SerializeField]
-    private float rangeOfInfluence = 0.5f;
+    private float rangeOfInfluence = 1;
     // How fast they will pull others
     [SerializeField]
     private float speed = 0.2f;
+    public float cohesionMod = 1;
+    
     // 
     [SerializeField]
     private float velocityLimit = 0.4f;
@@ -23,7 +25,7 @@ public class GalacticOrbit : MonoBehaviour
     void Start()
     {
         velocity = Vector3.zero;
-        gameObject.GetComponent<SphereCollider>().radius = rangeOfInfluence;
+        gameObject.GetComponent<SphereCollider>().radius *= rangeOfInfluence;
         //transform.up = velocity;
     }
 
@@ -59,7 +61,7 @@ public class GalacticOrbit : MonoBehaviour
     {
         foreach (GameObject g in BodiesOfInfluence)
         {
-            g.GetComponent<GalacticOrbit>().velocity += ((transform.position - g.transform.position) / (100 / (g.GetComponent<GalacticOrbit>().speed * Time.deltaTime)) );
+            g.GetComponent<GalacticOrbit>().velocity += ((transform.position - g.transform.position) / (100 / (g.GetComponent<GalacticOrbit>().speed * Time.deltaTime)) ) * cohesionMod;
         }
     }
 
