@@ -14,6 +14,18 @@ public class UI_Actions : MonoBehaviour
 		Time.timeScale = a_scale;
 	}
 
+	virtual public void ToggleTime()
+	{
+		if(Time.timeScale == 0)
+		{
+			Time.timeScale = 1;
+		}
+		else
+		{
+			Time.timeScale = 0;
+		}
+	}
+
 	virtual public void ChangeScene(string a_scene)
 	{
 		Application.LoadLevel(a_scene);
@@ -23,15 +35,4 @@ public class UI_Actions : MonoBehaviour
 	{
 		Application.Quit();
 	}
-
-	public void testgauge(float a_number)
-	{
-		print("test");
-
-		GameObject gauge = FindObjectOfType<GrowthGauge>().gameObject;
-
-		gauge.GetComponent<GrowthGauge>().energy = a_number;
-	}
-
-	protected bool pressed;
 }
