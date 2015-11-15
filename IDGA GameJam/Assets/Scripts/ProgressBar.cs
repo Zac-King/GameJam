@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
 	{
 		if(transform.localScale.x <= max)
 		{
-			transform.localScale += new Vector3(Time.deltaTime, 0, 0) / time;
+			transform.localScale += new Vector3(Time.deltaTime, 0, 0) / time * TimeKeeper.globalScale;
 		}
 	}
 

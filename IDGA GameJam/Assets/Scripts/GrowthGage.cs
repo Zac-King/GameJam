@@ -16,7 +16,7 @@ public class GrowthGage : MonoBehaviour
 		a_value /= 100;
 		a_value *= 180;
 
-		a_value -= 90;
+		//a_value -= 90;
 
 		posNeg = 1;
 
