@@ -16,6 +16,7 @@ GameObject:
   - 122: {fileID: 12293664}
   - 108: {fileID: 10898480}
   - 114: {fileID: 11441322}
+  - 54: {fileID: 5425240}
   m_Layer: 0
   m_Name: Sun_1
   m_TagString: Untagged
@@ -66,6 +67,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150780}
   m_Mesh: {fileID: 4300000, guid: dfbd4809d4315c14cb952747580664a2, type: 3}
+--- !u!54 &5425240
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150780}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &9505694
 Animator:
   serializedVersion: 3
@@ -163,7 +179,7 @@ SphereCollider:
   m_GameObject: {fileID: 150780}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 20.0701694
   m_Center: {x: 0, y: 0, z: 0}

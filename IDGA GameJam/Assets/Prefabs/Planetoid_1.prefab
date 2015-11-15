@@ -11,13 +11,17 @@ GameObject:
   - 33: {fileID: 3331082}
   - 23: {fileID: 2308258}
   - 95: {fileID: 9592714}
+  - 135: {fileID: 13515912}
+  - 135: {fileID: 13549932}
+  - 114: {fileID: 11482132}
+  - 54: {fileID: 5450028}
   m_Layer: 0
   m_Name: Planetoid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &435814
 Transform:
   m_ObjectHideFlags: 1
@@ -25,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141808}
   m_LocalRotation: {x: 0, y: 0, z: .342020184, w: .939692616}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.4499998, y: 0, z: -7.11000013}
   m_LocalScale: {x: .00300000003, y: .00300000003, z: .00300000003}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,6 +65,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141808}
   m_Mesh: {fileID: 4300000, guid: 87efc044b24e6e645ad883f2303087ae, type: 3}
+--- !u!54 &5450028
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141808}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!95 &9592714
 Animator:
   serializedVersion: 3
@@ -78,13 +97,58 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11482132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa535b10716328543b2bffdd822fc3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeOfInfluence: 3
+  speed: .200000003
+  cohesionMod: 1
+  velocityLimit: .400000006
+  velocity: {x: 0, y: 0, z: 0}
+  BodiesOfInfluence: []
+--- !u!135 &13515912
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 433.07373
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &13549932
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 433.07373
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141808}

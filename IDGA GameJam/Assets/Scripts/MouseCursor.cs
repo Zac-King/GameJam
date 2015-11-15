@@ -16,7 +16,7 @@ public class MouseCursor : Singleton<MouseCursor>
 	// Use this for initialization
 	void Start () 
 	{
-		Cursor.visible = false;
+		//Cursor.visible = false;
 	}
 	
 	void CursorMovement()
