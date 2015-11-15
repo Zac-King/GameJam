@@ -6,7 +6,7 @@ public class PauseResume : MonoBehaviour
 {
 	void Start ()
 	{
-		button = GetComponent<Button>();
+		Time.timeScale = 0;
 	}
 	
 	void Update ()
