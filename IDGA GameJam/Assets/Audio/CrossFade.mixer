@@ -5,7 +5,7 @@ AudioMixerController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MusicTransitions
+  m_Name: CrossFade
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300001}
   m_Snapshots:
@@ -16,7 +16,7 @@ AudioMixerController:
   m_ExposedParameters: []
   m_AudioMixerGroupViews:
   - guids:
-    - 285503edaaa5ec44082b467ad8ca506f
+    - f76a3700787ac4448822f38e37dcbe65
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -27,10 +27,10 @@ AudioMixerGroupController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 285503edaaa5ec44082b467ad8ca506f
+  m_GroupID: f76a3700787ac4448822f38e37dcbe65
   m_Children: []
-  m_Volume: 1b4b61a2bc30cba4db177171ed6ab27e
-  m_Pitch: 6a3947f666d59a943a1afcc8cbd930e3
+  m_Volume: 349d73119ccf7b74cbcfba97ecf594dd
+  m_Pitch: 5c279e230d6ad5e45bfa2b5eed66d7ca
   m_Effects:
   - {fileID: 24400002}
   m_UserColorIndex: 0
@@ -43,9 +43,9 @@ AudioMixerEffectController:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: 7833568a0df937943911f83c04854f51
+  m_EffectID: c6e1c477f29440b40b82d9ca0b2a4b6a
   m_EffectName: Attenuation
-  m_MixLevel: 6bc508107a2b0d84b872ff33ca7bd0ca
+  m_MixLevel: 3c3e850319c123042b52618907d0c1ac
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -57,6 +57,6 @@ AudioMixerSnapshotController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 5642aa1ca0cb63d45ad2438856d10a10
+  m_SnapshotID: 4fabf8d2de7ec8d4c9afa4fb991e2288
   m_FloatValues: {}
   m_TransitionOverrides: {}
