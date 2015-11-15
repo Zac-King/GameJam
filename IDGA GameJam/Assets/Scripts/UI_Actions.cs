@@ -4,9 +4,19 @@ using System.Collections;
 
 public class UI_Actions : MonoBehaviour
 {
+	public void EnableDisable(Button other)
+	{
+		other.interactable = !other.interactable;
+	}
+
 	public void EnableDisable(GameObject other)
 	{
 		other.SetActive(!other.activeSelf);
+	}
+
+	public void DisableSelf()
+	{
+		gameObject.SetActive(false);
 	}
 
 	public void SetTimeScale(float a_scale)
