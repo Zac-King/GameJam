@@ -35,7 +35,7 @@ public class CharacterController : MonoBehaviour
 	void GField()
 	{
 		GameObject mousePos = FindObjectOfType<MouseCursor>().gameObject;
-		field.transform.localScale = new Vector3(G_Force,0.01f,G_Force);;
+		field.transform.localScale = new Vector3(G_Force + 1f ,0.01f,G_Force + 1f);;
 		field.transform.position = new Vector3(mousePos.GetComponent<MouseCursor>().mPos.x,0,mousePos.GetComponent<MouseCursor>().mPos.z);
 		if(G_Force > 0)
 		{
