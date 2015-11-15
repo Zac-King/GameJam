@@ -4,6 +4,14 @@ using System.Collections;
 
 public class UI_Actions : MonoBehaviour
 {
+	void Update()
+	{
+		if(TimeKeeper.globalScale == 0)
+		{
+			GetComponent<Button>().interactable = true;
+		}
+	}
+
 	public void EnableDisable(Button other)
 	{
 		other.interactable = !other.interactable;

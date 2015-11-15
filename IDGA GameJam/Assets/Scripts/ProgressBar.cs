@@ -7,7 +7,8 @@ public class ProgressBar : MonoBehaviour
 	void Start()
 	{
 		max = transform.localScale.x;
-		transform.localScale = new Vector3(0, transform.localScale.y, transform.localScale.z);
+		transform.localScale =
+			new Vector3(0, transform.localScale.y, transform.localScale.z);
 
 		time = time == 0 ? 1 : time;
 	}

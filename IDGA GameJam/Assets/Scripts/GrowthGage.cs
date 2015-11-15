@@ -15,23 +15,29 @@ public class GrowthGage : MonoBehaviour
 
 		a_value /= 100;
 		a_value *= 180;
+		a_value *= -1;
 
-		//a_value -= 90;
+		while(true)
+		{
+			transform.localEulerAngles = new Vector3(
+				transform.localEulerAngles.x,
+				transform.localEulerAngles.y,
+				a_value);
 
-		posNeg = 1;
+			temp.text = ((int)tmp).ToString() + " k";
 
-		//if(a_value < transform.localEulerAngles.z)
-		//{
-		//	a_value *= -1;
-		//	posNeg = -1;
-		//}
+			yield return null;
+		}
+
+		/*float tmp = a_value;
+
 		while(transform.localEulerAngles.z != a_value)
 		{
 			transform.localEulerAngles += new Vector3
-				(0, 0, posNeg * Time.deltaTime * timeMod);
+				(0, 0, Time.deltaTime * timeMod);
 
-			temp.text = 
-				((int)(transform.localEulerAngles.z / 180 * 100)).ToString();
+			//temp.text = 
+				//((int)(transform.localEulerAngles.z / 180 * 100)).ToString();
 
 			if(Mathf.Abs(Mathf.Abs(a_value) - Mathf.Abs (transform.localEulerAngles.z)) < 1f)
 			{
@@ -46,7 +52,7 @@ public class GrowthGage : MonoBehaviour
 			}
 
 			yield return null;
-		}
+		}*/
 	}
 
 	private float posNeg;
