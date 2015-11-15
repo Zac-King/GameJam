@@ -4,26 +4,31 @@ using System.Collections;
 
 public class GrowthGage : MonoBehaviour
 {
+	void Awake()
+	{
+		timeMod = 1;
+	}
+
 	IEnumerator AdjustGage(float a_value)
 	{
 		float tmp = a_value;
 
-		a_value *= Mathf.Abs(a_value) / a_value;
-
 		a_value /= 100;
 		a_value *= 180;
 
+		a_value -= 90;
+
 		posNeg = 1;
 
-		if(a_value < transform.localEulerAngles.z)
-		{
-			a_value *= -1;
-			posNeg = -1;
-		}
+		//if(a_value < transform.localEulerAngles.z)
+		//{
+		//	a_value *= -1;
+		//	posNeg = -1;
+		//}
 		while(transform.localEulerAngles.z != a_value)
 		{
 			transform.localEulerAngles += new Vector3
-				(0, 0, posNeg * Time.deltaTime * 25f);
+				(0, 0, posNeg * Time.deltaTime * timeMod);
 
 			temp.text = 
 				((int)(transform.localEulerAngles.z / 180 * 100)).ToString();
@@ -49,6 +54,8 @@ public class GrowthGage : MonoBehaviour
 	[SerializeField] private float m_energy;
 
 	public Text temp;
+
+	public float timeMod;
 
 	public float energy
 	{
