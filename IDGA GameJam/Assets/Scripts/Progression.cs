@@ -16,15 +16,16 @@ public class Progression : MonoBehaviour
 		Count
 	}
 
-	public int stage;
+
 	public float RoundTimer;
 	public float GameTime;
 	GameObject player;
 	public float timeMod;
 	public eSTAGES cStage;
+	private int stage;
 	// Use this for initialization
 	void Start () 
-	{
+	{	stage = (int)cStage;
 		player = GameObject.FindWithTag("Player");
 		StageTracker();
 	}
