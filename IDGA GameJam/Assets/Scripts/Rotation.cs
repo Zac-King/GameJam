@@ -9,7 +9,7 @@ public class Rotation : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		speed = GetComponent<Stats>().currentEnergy;
+		speed = GetComponentInParent<Stats>().currentEnergy;
 
 		//gameObject.GetComponent<Texture>().
 		//gameObject.GetComponent<Material>().color = new Color(gameObject.GetComponent<Material>().color.r,
