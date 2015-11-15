@@ -15,9 +15,9 @@ public class Mixer : MonoBehaviour
 
 	public void SkipTrack()
 	{
-		Tracks[CurrentTrack].Stop();
-		if(CurrentTrack + 1 != Tracks.Count)
+		if(CurrentTrack != Tracks.Count - 1)
 		{
+			Tracks[CurrentTrack].Stop();
 			CurrentTrack++;
 			Play();
 		}
@@ -25,9 +25,9 @@ public class Mixer : MonoBehaviour
 
 	public void PrevTrack()
 	{
-		Tracks[CurrentTrack].Stop();
-		if(CurrentTrack - 1 <= 0)
+		if(CurrentTrack != 0)
 		{
+			Tracks[CurrentTrack].Stop();
 			CurrentTrack--;
 			Play();
 		}
