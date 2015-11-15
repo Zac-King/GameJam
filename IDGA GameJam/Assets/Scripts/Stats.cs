@@ -61,11 +61,11 @@ public class Stats : MonoBehaviour
 		_fsm.Transition(_fsm.state, CSTATES.e_Shrinking);
 		minEnergy = 0;
 		currentEnergy = maxEnergy / 2;
-		if(FindObjectOfType<GrowthGage>().gameObject)
-		{
-			GameObject meter = FindObjectOfType<GrowthGage>().gameObject;
-			meter.GetComponent<GrowthGage>().energy = currentEnergy;
-		}
+//		if(FindObjectOfType<GrowthGage>().gameObject == true)
+//		{
+//			GameObject meter = FindObjectOfType<GrowthGage>().gameObject;
+//			meter.GetComponent<GrowthGage>().energy = currentEnergy;
+//		}
 		StartCoroutine(Shrinking());
 	}
 
@@ -120,8 +120,8 @@ public class Stats : MonoBehaviour
 	void Update () 
 	{
 		transform.localScale = new Vector3(currentEnergy, currentEnergy, currentEnergy);
-		GameObject meter = FindObjectOfType<GrowthGage>().gameObject;
-		meter.GetComponent<GrowthGage>().energy = currentEnergy;
+//		GameObject meter = FindObjectOfType<GrowthGage>().gameObject;
+//		meter.GetComponent<GrowthGage>().energy = currentEnergy;
 		if(_fsm.state == CSTATES.e_Dead)
 		{
 			StopAllCoroutines();
