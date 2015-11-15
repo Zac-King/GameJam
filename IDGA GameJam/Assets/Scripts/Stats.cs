@@ -21,11 +21,12 @@ public class Stats : MonoBehaviour
 	[SerializeField]
 	public float currentEnergy;
 	public float maxEnergy;
-
+	private Vector3 originalScale;
 	public float growthTimer; 
 
 	void Awake()
 	{
+		originalScale = transform.lossyScale;
 		_fsm = new FSM<CSTATES>();
 		AddStates();
 		AddTransitions();
@@ -119,7 +120,7 @@ public class Stats : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		transform.localScale = new Vector3(currentEnergy, currentEnergy, currentEnergy);
+		transform.localScale = new Vector3(currentEnergy * originalScale.x, currentEnergy * originalScale.y, currentEnergy * originalScale.z);
 		GameObject meter = FindObjectOfType<GrowthGauge>().gameObject;
 		meter.GetComponent<GrowthGauge>().energy = currentEnergy;
 		if(_fsm.state == CSTATES.e_Dead)
