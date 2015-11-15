@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GrowthGauge : MonoBehaviour
+public class GrowthGage : MonoBehaviour
 {
 	IEnumerator AdjustGage(float a_value)
 	{
