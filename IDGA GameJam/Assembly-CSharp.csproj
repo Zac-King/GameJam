@@ -53,9 +53,13 @@
      <Compile Include="Assets\Scripts\GUIHowTo.cs" />
      <Compile Include="Assets\Scripts\GalacticOrbit.cs" />
      <Compile Include="Assets\Scripts\GrowthGage.cs" />
+     <Compile Include="Assets\Scripts\LifeProgress.cs" />
      <Compile Include="Assets\Scripts\Messenger.cs" />
      <Compile Include="Assets\Scripts\Mixer.cs" />
      <Compile Include="Assets\Scripts\MouseCursor.cs" />
+     <Compile Include="Assets\Scripts\Orbiting.cs" />
+     <Compile Include="Assets\Scripts\Pause.cs" />
+     <Compile Include="Assets\Scripts\PlanetMovementStats.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\ProgressBar.cs" />
      <Compile Include="Assets\Scripts\Progression.cs" />

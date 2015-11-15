@@ -11,23 +11,24 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.W)) // UP
+        if (Input.GetKey(KeyCode.W)) // UP
         {
             inputVelocity.z += (speed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.S)) // Down
+        if (Input.GetKey(KeyCode.S)) // Down
         {
             inputVelocity.z -= (speed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.D)) // Right
+        if (Input.GetKey(KeyCode.D)) // Right
         {
             inputVelocity.x += (speed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.A)) // Left
+        if (Input.GetKey(KeyCode.A)) // Left
         {
             inputVelocity.x -= (speed * Time.deltaTime);
         }
 
         gameObject.GetComponent<GalacticOrbit>().velocity += inputVelocity;
+        inputVelocity = Vector3.zero;
 	}
 }
