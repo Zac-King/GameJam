@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BaseStats.cs" />
      <Compile Include="Assets\Scripts\Callback.cs" />
+     <Compile Include="Assets\Scripts\CameraOffset.cs" />
      <Compile Include="Assets\Scripts\CharacterController.cs" />
      <Compile Include="Assets\Scripts\FSM.cs" />
      <Compile Include="Assets\Scripts\FixedStarCore.cs" />
